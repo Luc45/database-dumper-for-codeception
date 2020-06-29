@@ -9,7 +9,7 @@
         }
     ],
     "autoload": {
-        "PSR-4": {
+        "psr-4": {
             "DumpGenerator\\\\": "src"
         }
     },
