@@ -1,0 +1,19 @@
+{
+    "name": "lucasbustamante/db-dumper-for-codeception",
+    "description": "Easily generates database dumps to be used in Codeception.",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Lucas Bustamante",
+            "email": "lucasfbustamante@gmail.com"
+        }
+    ],
+    "autoload": {
+        "PSR-4": {
+            "\\DBDumper": "src"
+        }
+    },
+    "require": {
+        "ifsnop/mysqldump-php": "^2.9"
+    }
+}
