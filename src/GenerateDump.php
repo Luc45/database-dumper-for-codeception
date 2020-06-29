@@ -13,8 +13,6 @@ use Codeception\Lib\Di;
 use Codeception\Lib\ModuleContainer;
 use Codeception\Configuration;
 
-require_once __DIR__ . '/../vendor/autoload.php';
-
 class GenerateDump extends Command implements CustomCommandInterface {
 
 	use \Codeception\Command\Shared\FileSystem;

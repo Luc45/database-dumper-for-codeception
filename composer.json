@@ -11,7 +11,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "DumpGenerator\\\\": "src"
+            "DumpGenerator\\": "src"
         }
     },
     "require": {
