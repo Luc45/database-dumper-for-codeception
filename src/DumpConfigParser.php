@@ -36,15 +36,17 @@ class DumpConfigParser {
  * @var array \$dump_settings Settings for the dumper.
  * @var array \$pdo_settings  Settings for the PDO that the Dumper uses.
  * @var Ifsnop\Mysqldump\Mysqldump \$dumper A Dumper instance for further control. Check everything
- *                                          you can in the link bellow.
+ *                                          you can do in the link bellow.
+ *
+ * @link https://github.com/ifsnop/mysqldump-php You can find more info about \$dumper, \$dump_settings and \$pdo_settings in this link.
  *
  * @example \$dumper->setTableLimits( [ 'users' => 300,'logs' => 50, 'posts' => 10 ] );
  *
- * @link https://github.com/ifsnop/mysqldump-php You can find more info about \$dumper, \$dumper_args and \$pdo_args in this link.
- *
  * @return array You should not change the generated return.
  */
+
 \$dump_settings = $dump_settings;
+
 \$pdo_settings  = $pdo_settings;
 
 // Do not change the return.
