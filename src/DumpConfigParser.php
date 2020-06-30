@@ -29,7 +29,7 @@ class DumpConfigParser {
 
 		if ( file_exists( $this->dump_config ) ) {
 			// Config already exists.
-			false;
+			return false;
 		}
 
 		file_put_contents( $this->dump_config,
