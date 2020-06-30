@@ -35,8 +35,8 @@ class DumpConfigParser {
 /**
  * @var array \$dump_settings Settings for the dumper.
  * @var array \$pdo_settings  Settings for the PDO that the Dumper uses.
- * @var Ifsnop\Mysqldump\Mysqldump \$dumper You can customize which tables are going to be used in the dump,
- *                                         as well as execute queries for which rows should go or not into the dump, etc.
+ * @var Ifsnop\Mysqldump\Mysqldump \$dumper A Dumper instance for further control. Check everything
+ *                                          you can in the link bellow.
  *
  * @example \$dumper->setTableLimits( [ 'users' => 300,'logs' => 50, 'posts' => 10 ] );
  *
