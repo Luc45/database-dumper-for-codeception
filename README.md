@@ -1,4 +1,4 @@
-# Usage
+# Install
 
 `composer require --dev lucasbustamante/db-dumper-for-codeception`
 
@@ -22,9 +22,11 @@ modules:
 
 Replace `%DUMP_DB_HOST%` and similars with your actual values. This should be your local development database, from which the dumps will be generated from.
 
+# Usage
+
 Run `./vendor/bin/codecept dump <suite>`
 
-In the first run, a Dump config file will be generated at `tests/data/<dump>.sql.php` where you can fine-tune how your dump will be generated. On the subsequent runs, it will just generate the dump.
+In the first run, a Dump config file will be generated at `tests/data/<dump>.sql.php` where you can fine-tune how your dump will be generated. On the subsequent runs, it will generate the dump based on the config. If you don't override any config, it will just do a full dump of the database.
 
 This library is basically a Codeception wrapper around https://packagist.org/packages/ifsnop/mysqldump-php.
 
