@@ -42,14 +42,51 @@ class GenerateDump extends Command implements CustomCommandInterface {
 			return 1;
 		}
 
-		$dsn          = $db_module->_getConfig( 'dump_dsn' );
-		$user         = $db_module->_getConfig( 'dump_user' );
-		$password     = $db_module->_getConfig( 'dump_password' );
-		$dumpLocation = $this->getDumpLocation( $db_module );
+		$dsn           = $db_module->_getConfig( 'dump_dsn' );
+		$user          = $db_module->_getConfig( 'dump_user' );
+		$password      = $db_module->_getConfig( 'dump_password' );
+		$dump_location = $this->getDumpLocation( $db_module );
+
+		$dump_config = new DumpConfigParser( $dump_location );
 
 		try {
-			$dump = new IMysqldump\Mysqldump( $dsn, $user, $password );
-			$dump->start( $dumpLocation );
+			// Create the Dumper instance
+			$dumper = new IMysqldump\Mysqldump( $dsn, $user, $password );
+
+			// Get around Dumper private properties
+			$refl_dumper = new \ReflectionObject( $dumper );
+
+			$refl_dump_settings = $refl_dumper->getProperty( 'dumpSettings' );
+			$refl_dump_settings->setAccessible( true );
+
+			$refl_pdo_settings = $refl_dumper->getProperty( 'pdoSettings' );
+			$refl_pdo_settings->setAccessible( true );
+
+			$dump_config->makeDumpConfig( $refl_dump_settings->getValue( $dumper ), $refl_pdo_settings->getValue( $dumper ) );
+
+			// Let the user change the dumper, dumper_settings and pdo_settings
+			$return = require_once $dump_config->getDumpConfigFile();
+
+			if (
+				! is_array( $return ) ||
+				count( $return ) !== 3 ||
+				! $return[0] instanceof IMysqldump\Mysqldump ||
+				! is_array( $return[1] ) ||
+				! is_array( $return[2] )
+			) {
+				$output->writeln( sprintf( '<error>Unexpected return format from dump config file %s</error>', $dump_config->getDumpConfigFile() ) );
+
+				return 1;
+			}
+
+			$dumper      = $return[0];
+			$dumper_args = $return[1];
+			$pdo_args    = $return[2];
+
+			$refl_dump_settings->setValue( $dumper, $dumper_args );
+			$refl_pdo_settings->setValue( $dumper, $pdo_args );
+
+			$dumper->start( $dump_location );
 		} catch ( \Exception $e ) {
 			$output->writeln( sprintf( '<error>mysqldump-php error: %s</error>', $e->getMessage() ) );
 
