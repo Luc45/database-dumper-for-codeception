@@ -62,7 +62,7 @@ class GenerateDump extends Command implements CustomCommandInterface {
 			$refl_pdo_settings = $refl_dumper->getProperty( 'pdoSettings' );
 			$refl_pdo_settings->setAccessible( true );
 
-			$dump_config->makeDumpConfig( $refl_dump_settings->getValue( $dumper ), $refl_pdo_settings->getValue( $dumper ) );
+			$is_new_config = $dump_config->makeDumpConfig( $refl_dump_settings->getValue( $dumper ), $refl_pdo_settings->getValue( $dumper ) );
 
 			// Let the user change the dumper, dumper_settings and pdo_settings
 			$return = require_once $dump_config->getDumpConfigFile();
@@ -86,7 +86,12 @@ class GenerateDump extends Command implements CustomCommandInterface {
 			$refl_dump_settings->setValue( $dumper, $dumper_args );
 			$refl_pdo_settings->setValue( $dumper, $pdo_args );
 
-			$dumper->start( $dump_location );
+			if ( $is_new_config ) {
+				$output->writeln( sprintf( '<comment>Dump config generated. Run the command again to generate the dump, or edit the dump configs first if you\'d like at %s</comment>', $dump_config->getDumpConfigFile() ) );
+			} else {
+				$output->writeln( sprintf( '<info>Dump successfully generated %s</info>', $dump_location ) );
+				$dumper->start( $dump_location );
+			}
 		} catch ( \Exception $e ) {
 			$output->writeln( sprintf( '<error>mysqldump-php error: %s</error>', $e->getMessage() ) );
 

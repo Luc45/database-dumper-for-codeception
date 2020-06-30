@@ -13,7 +13,13 @@ class DumpConfigParser {
 		$this->dump_location = $dump_location;
 	}
 
-	public function makeDumpConfig( array $dump_settings, array $pdo_settings ) {
+	/**
+	 * @param array $dump_settings
+	 * @param array $pdo_settings
+	 *
+	 * @return bool Whether the dump config is new or existing.
+	 */
+	public function makeDumpConfig( array $dump_settings, array $pdo_settings ): bool {
 		$dump_dir          = dirname( $this->dump_location );
 		$dump_file         = basename( $this->dump_location );
 		$this->dump_config = $dump_dir . '/' . $dump_file . '.php';
@@ -21,10 +27,7 @@ class DumpConfigParser {
 		$dump_settings = VarExporter::export( $dump_settings );
 		$pdo_settings  = VarExporter::export( $pdo_settings );
 
-		if ( file_exists( $this->dump_config ) ) {
-			codecept_debug( '(GenerateDump) Skipping makeDumpConfig since file already exists. ' . $this->dump_config );
-			return;
-		}
+		$is_new_config = ! file_exists( $this->dump_config );
 
 		file_put_contents( $this->dump_config,
 			<<<PHP
@@ -48,6 +51,8 @@ class DumpConfigParser {
 return [ \$dumper, \$dump_settings, \$pdo_settings ];
 PHP
 		);
+
+		return $is_new_config;
 	}
 
 	public function getDumpConfigFile() {
