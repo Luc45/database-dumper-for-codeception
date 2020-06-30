@@ -27,7 +27,10 @@ class DumpConfigParser {
 		$dump_settings = VarExporter::export( $dump_settings );
 		$pdo_settings  = VarExporter::export( $pdo_settings );
 
-		$is_new_config = ! file_exists( $this->dump_config );
+		if ( file_exists( $this->dump_config ) ) {
+			// Config already exists.
+			false;
+		}
 
 		file_put_contents( $this->dump_config,
 			<<<PHP
@@ -54,7 +57,8 @@ return [ \$dumper, \$dump_settings, \$pdo_settings ];
 PHP
 		);
 
-		return $is_new_config;
+		// New config
+		return true;
 	}
 
 	public function getDumpConfigFile() {
