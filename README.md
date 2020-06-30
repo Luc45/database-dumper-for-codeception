@@ -14,7 +14,7 @@ On a suite that uses a `Codeception\Modules\Db` module (or any module that exten
 ```
 modules:
     config:
-        WPDb:
+        Db:
             dump_dsn: 'mysql:host=%DUMP_DB_HOST%;dbname=%DUMP_DB_NAME%'
             dump_user: '%DUMP_DB_USER%'
             dump_password: '%DUMP_DB_PASSWORD%'
