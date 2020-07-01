@@ -14,12 +14,6 @@
             "DumpGenerator\\": "src"
         }
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/Luc45/mysqldump-php"
-        }
-    ],
     "require": {
         "codeception/codeception": "^2.5 || ^3.0 || ^4.0",
         "luc45/mysqldump-php": "2.9.2"
