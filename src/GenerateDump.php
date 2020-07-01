@@ -8,7 +8,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Ifsnop\Mysqldump as IMysqldump;
+use Luc45\Mysqldump as IMysqldump;
 use Codeception\Lib\Di;
 use Codeception\Lib\ModuleContainer;
 use Codeception\Configuration;
@@ -51,21 +51,20 @@ class GenerateDump extends Command implements CustomCommandInterface {
 
 		try {
 			// Create the Dumper instance
-			$dumper = new IMysqldump\Mysqldump( $dsn, $user, $password );
+			$dumper  = new IMysqldump\Mysqldump( $dsn, $user, $password );
 
-			// Get around Dumper private properties
-			$refl_dumper = new \ReflectionObject( $dumper );
+			// A PDO instance to the database to be used inside the dump config file
+			$pdo = clone $dumper;
+			$pdo->connect();
+			$handler = $pdo->get_db_handler();
 
-			$refl_dump_settings = $refl_dumper->getProperty( 'dumpSettings' );
-			$refl_dump_settings->setAccessible( true );
-
-			$refl_pdo_settings = $refl_dumper->getProperty( 'pdoSettings' );
-			$refl_pdo_settings->setAccessible( true );
-
-			$is_new_config = $dump_config->makeDumpConfig( $refl_dump_settings->getValue( $dumper ), $refl_pdo_settings->getValue( $dumper ) );
+			$is_new_config = $dump_config->makeDumpConfig( $dumper->get_dump_settings_defaults(), $dumper->get_pdo_settings_defaults() );
 
 			// Let the user change the dumper, dumper_settings and pdo_settings
 			$return = require_once $dump_config->getDumpConfigFile();
+
+			// Close the handler connection
+			unset( $pdo );
 
 			if (
 				! is_array( $return ) ||

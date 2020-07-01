@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bd89a5de65dff34fa5655b252fad3138",
+    "content-hash": "a10fe81f627c55f19ecbfed7b17d6d90",
     "packages": [
         {
             "name": "behat/gherkin",
@@ -417,17 +417,17 @@
             "time": "2019-07-01T23:21:34+00:00"
         },
         {
-            "name": "ifsnop/mysqldump-php",
-            "version": "v2.9",
+            "name": "luc45/mysqldump-php",
+            "version": "2.9.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ifsnop/mysqldump-php.git",
-                "reference": "fc9c119fe5d70af9a685cad6a8ac612fd7589e25"
+                "url": "https://github.com/Luc45/mysqldump-php.git",
+                "reference": "c632a41b833dc291d1a2890c44da0392a0e16e9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ifsnop/mysqldump-php/zipball/fc9c119fe5d70af9a685cad6a8ac612fd7589e25",
-                "reference": "fc9c119fe5d70af9a685cad6a8ac612fd7589e25",
+                "url": "https://api.github.com/repos/Luc45/mysqldump-php/zipball/c632a41b833dc291d1a2890c44da0392a0e16e9a",
+                "reference": "c632a41b833dc291d1a2890c44da0392a0e16e9a",
                 "shasum": ""
             },
             "require": {
@@ -440,10 +440,9 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Ifsnop\\": "src/Ifsnop/"
+                    "Luc45\\": "src/Luc45/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-3.0-or-later"
             ],
@@ -452,12 +451,16 @@
                     "name": "Diego Torres",
                     "homepage": "https://github.com/ifsnop",
                     "role": "Developer"
+                },
+                {
+                    "name": "Lucas Bustamante",
+                    "homepage": "https://github.com/Luc45",
+                    "role": "Developer"
                 }
             ],
-            "description": "PHP version of mysqldump cli that comes with MySQL",
+            "description": "A fork of https://github.com/ifsnop/mysqldump-php, a PHP implementation of mysqldump.",
             "homepage": "https://github.com/ifsnop/mysqldump-php",
             "keywords": [
-                "PHP7",
                 "database",
                 "hhvm",
                 "mariadb",
@@ -467,9 +470,13 @@
                 "pdo",
                 "php",
                 "php5",
+                "php7",
                 "sql"
             ],
-            "time": "2020-04-03T14:40:40+00:00"
+            "support": {
+                "source": "https://github.com/Luc45/mysqldump-php/tree/2.9.2"
+            },
+            "time": "2020-07-01T19:42:32+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -1645,20 +1652,20 @@
         },
         {
             "name": "sebastian/diff",
-            "version": "4.0.1",
+            "version": "4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "3e523c576f29dacecff309f35e4cc5a5c168e78a"
+                "reference": "1e90b4cf905a7d06c420b1d2e9d11a4dc8a13113"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/3e523c576f29dacecff309f35e4cc5a5c168e78a",
-                "reference": "3e523c576f29dacecff309f35e4cc5a5c168e78a",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/1e90b4cf905a7d06c420b1d2e9d11a4dc8a13113",
+                "reference": "1e90b4cf905a7d06c420b1d2e9d11a4dc8a13113",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3"
+                "php": "^7.3 || ^8.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.0",
@@ -1703,7 +1710,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-05-08T05:01:12+00:00"
+            "time": "2020-06-30T04:46:02+00:00"
         },
         {
             "name": "sebastian/environment",

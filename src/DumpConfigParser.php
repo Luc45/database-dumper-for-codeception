@@ -38,6 +38,9 @@ class DumpConfigParser {
 /**
  * @var array \$dump_settings Settings for the dumper.
  * @var array \$pdo_settings  Settings for the PDO that the Dumper uses.
+ * @var PDO   \$handler       A PDO handler to the database from which the Dumps are being generated.
+ *                            Any query that you run against this PDO will affect the database
+ *                            from which you are generating the dumps permanently, use it wisely.
  * @var Ifsnop\Mysqldump\Mysqldump \$dumper A Dumper instance for further control. Check everything
  *                                          you can do in the link bellow.
  *
