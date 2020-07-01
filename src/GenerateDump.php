@@ -8,7 +8,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Luc45\Mysqldump;
+use MySqlDumpPhp\Mysqldump;
 use Codeception\Lib\Di;
 use Codeception\Lib\ModuleContainer;
 use Codeception\Configuration;
@@ -82,8 +82,8 @@ class GenerateDump extends Command implements CustomCommandInterface {
 			$dumper_args = $return[1];
 			$pdo_args    = $return[2];
 
-			$refl_dump_settings->setValue( $dumper, $dumper_args );
-			$refl_pdo_settings->setValue( $dumper, $pdo_args );
+			$dumper->set_dump_settings( $dumper_args );
+			$dumper->set_pdo_settings( $pdo_args );
 
 			if ( $is_new_config ) {
 				$output->writeln( sprintf( '<comment>Dump config generated. Run the command again to generate the dump, or edit the dump configs first if you\'d like at %s</comment>', $dump_config->getDumpConfigFile() ) );
