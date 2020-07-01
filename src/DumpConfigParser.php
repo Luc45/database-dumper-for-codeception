@@ -36,15 +36,15 @@ class DumpConfigParser {
 			<<<PHP
 <?php
 /**
- * @var array \$dump_settings Settings for the dumper.
- * @var array \$pdo_settings  Settings for the PDO that the Dumper uses.
- * @var PDO   \$handler       A PDO handler to the database from which the Dumps are being generated.
- *                            Any query that you run against this PDO will affect the database
- *                            from which you are generating the dumps permanently, use it wisely.
- * @var Ifsnop\Mysqldump\Mysqldump \$dumper A Dumper instance for further control. Check everything
- *                                          you can do in the link bellow.
+ * @var array \$dump_settings    Settings for the dumper.
+ * @var array \$pdo_settings     Settings for the PDO that the Dumper uses.
+ * @var PDO   \$handler          A PDO handler to the database from which the Dumps are being generated.
+ *                               Any query that you run against this PDO will affect the database
+ *                               from which you are generating the dumps permanently, use it wisely.
+ * @var Luc45\Mysqldump \$dumper A Dumper instance for further control. Check everything
+ *                               you can do in the link bellow.
  *
- * @link https://github.com/ifsnop/mysqldump-php You can find more info about \$dumper, \$dump_settings and \$pdo_settings in this link.
+ * @link https://github.com/luc45/mysqldump-php You can find more info about \$dumper, \$dump_settings and \$pdo_settings in this link.
  *
  * @example \$dumper->setTableLimits( [ 'users' => 300,'logs' => 50, 'posts' => 10 ] );
  *

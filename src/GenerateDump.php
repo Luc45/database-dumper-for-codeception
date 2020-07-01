@@ -8,7 +8,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Luc45\Mysqldump as IMysqldump;
+use Luc45\Mysqldump;
 use Codeception\Lib\Di;
 use Codeception\Lib\ModuleContainer;
 use Codeception\Configuration;
@@ -51,7 +51,7 @@ class GenerateDump extends Command implements CustomCommandInterface {
 
 		try {
 			// Create the Dumper instance
-			$dumper  = new IMysqldump\Mysqldump( $dsn, $user, $password );
+			$dumper  = new Mysqldump( $dsn, $user, $password );
 
 			// A PDO instance to the database to be used inside the dump config file
 			$pdo = clone $dumper;
@@ -69,7 +69,7 @@ class GenerateDump extends Command implements CustomCommandInterface {
 			if (
 				! is_array( $return ) ||
 				count( $return ) !== 3 ||
-				! $return[0] instanceof IMysqldump\Mysqldump ||
+				! $return[0] instanceof Mysqldump ||
 				! is_array( $return[1] ) ||
 				! is_array( $return[2] )
 			) {
