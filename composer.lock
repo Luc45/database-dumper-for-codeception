@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ae82bf0ffd73fca807c18cec338c6fe8",
+    "content-hash": "dd5d0d2903811538249aa0f4926df505",
     "packages": [
         {
             "name": "behat/gherkin",
@@ -417,17 +417,17 @@
             "time": "2019-07-01T23:21:34+00:00"
         },
         {
-            "name": "luc45/mysqldump-php",
-            "version": "2.9.2",
+            "name": "lucasbustamante/mysqldump-php",
+            "version": "v2.9.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Luc45/mysqldump-php.git",
-                "reference": "c632a41b833dc291d1a2890c44da0392a0e16e9a"
+                "reference": "3892518594a90ccfe91e0ebd24aa58c696537306"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Luc45/mysqldump-php/zipball/c632a41b833dc291d1a2890c44da0392a0e16e9a",
-                "reference": "c632a41b833dc291d1a2890c44da0392a0e16e9a",
+                "url": "https://api.github.com/repos/Luc45/mysqldump-php/zipball/3892518594a90ccfe91e0ebd24aa58c696537306",
+                "reference": "3892518594a90ccfe91e0ebd24aa58c696537306",
                 "shasum": ""
             },
             "require": {
@@ -440,9 +440,10 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Luc45\\": "src/Luc45/"
+                    "MySqlDumpPhp\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-3.0-or-later"
             ],
@@ -461,6 +462,7 @@
             "description": "A fork of https://github.com/ifsnop/mysqldump-php, a PHP implementation of mysqldump.",
             "homepage": "https://github.com/ifsnop/mysqldump-php",
             "keywords": [
+                "PHP7",
                 "database",
                 "hhvm",
                 "mariadb",
@@ -470,13 +472,9 @@
                 "pdo",
                 "php",
                 "php5",
-                "php7",
                 "sql"
             ],
-            "support": {
-                "source": "https://github.com/Luc45/mysqldump-php/tree/2.9.2"
-            },
-            "time": "2020-07-01T19:42:32+00:00"
+            "time": "2020-07-01T20:43:27+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -3278,6 +3276,81 @@
                 }
             ],
             "time": "2020-06-11T12:16:36+00:00"
+        },
+        {
+            "name": "symfony/var-exporter",
+            "version": "v5.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/var-exporter.git",
+                "reference": "eabaabfe1485ca955c5b53307eade15ccda57a15"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/var-exporter/zipball/eabaabfe1485ca955c5b53307eade15ccda57a15",
+                "reference": "eabaabfe1485ca955c5b53307eade15ccda57a15",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/polyfill-php80": "^1.15"
+            },
+            "require-dev": {
+                "symfony/var-dumper": "^4.4.9|^5.0.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\VarExporter\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "A blend of var_export() + serialize() to turn any serializable data structure to plain PHP code",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "clone",
+                "construct",
+                "export",
+                "hydrate",
+                "instantiate",
+                "serialize"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-06-07T15:42:22+00:00"
         },
         {
             "name": "symfony/yaml",
